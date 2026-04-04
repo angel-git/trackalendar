@@ -1,0 +1,25 @@
+## Trackalendar 🗓️
+
+It is a calendar heatmap that shows the number of events that happened on each day.
+
+### Example
+
+See the demo published in GitHub Pages: https://angel-git.github.io/trackalendar/
+
+### Usage
+
+1. Fork this repo.
+2. Enable Github pages in the settings, set the source to `docs` branch.
+3. Run `log.sh` to log an event, events are stored in `events.txt`, each line contains a date that something happened, you can log multiple events on the same day.
+4. Commit and push your changes.
+5. A Github action will generate the html page and publish it to GitHub Pages from the `docs` branch.
+
+### TODO
+
+- [ ] Parse the entries file
+- [ ] Generate the html page
+- [ ] Add a switch between examples and prod data
+- [ ] Publish to GitHub Pages
+- [ ] Windows scripts
+- [ ] Customize heatmap colors and threesholds
+- [ ] Theme support
