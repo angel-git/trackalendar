@@ -74,11 +74,20 @@ fn add_head(config: &Config) -> String {
           grid-template-rows: repeat(7, 24px);
           gap: 2px;
         }
-
         .day {
           width: 24px;
           height: 24px;
           border-radius: 2px;
+        }
+
+        @media (max-width: 1400px) {
+            .year {
+                grid-template-rows: repeat(7, 18px);
+            }
+            .day {
+                width: 18px;
+                height: 18px;
+            }
         }
 
         .level-0 { background: var(--level-0-color); }
