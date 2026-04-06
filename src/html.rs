@@ -54,6 +54,7 @@ fn add_head() -> String {
     let styles = r#"
 
         body {
+            font-family: monospace,sans-serif;
             background-color: oklch(0.9674 0 214.73);
         }
         h3 {
