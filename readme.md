@@ -1,10 +1,19 @@
 ## Trackalendar 🗓️
 
-It is a calendar heatmap that shows the number of events that happened on each day.
 ![trackalendar.png](screenshots/trackalendar.png)
+
+
+It is a calendar heatmap that shows the number of events that happened on each day.
+
+Deployed in your Github Pages.
+
+it can be used to track your habits, projects, or anything you want to log. I use it for my sex life:
+
+![me.png](screenshots/me.png)
+
 ### Example
 
-See the demo published in GitHub Pages: https://angel-git.github.io/trackalendar/
+See the demo published in GitHub Pages with random dates: https://angel-git.github.io/trackalendar/
 
 ### Usage
 
