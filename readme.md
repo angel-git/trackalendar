@@ -35,7 +35,7 @@ Once is configured commit and push your changes
 - [x] Generate the html page
 - [x] Add a switch between examples and prod data
 - [x] Publish to GitHub Pages
-- [ ] Support mobile
+- [x] Support mobile
 - [ ] Windows scripts
 - [x] Customize heatmap colors and threesholds
 - [ ] Theme support

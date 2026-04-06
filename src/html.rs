@@ -90,6 +90,16 @@ fn add_head(config: &Config) -> String {
             }
         }
 
+        @media (max-width: 1080px) {
+            .year {
+                grid-template-rows: repeat(7, 14px);
+            }
+            .day {
+                width: 14px;
+                height: 14px;
+            }
+        }
+
         .level-0 { background: var(--level-0-color); }
         .level-1 { background: var(--level-1-color); }
         .level-2 { background: var(--level-2-color); }
