@@ -11,9 +11,16 @@ pub enum Theme {
 }
 
 #[derive(Deserialize)]
+pub enum Mode {
+    Light,
+    Dark,
+}
+
+#[derive(Deserialize)]
 pub struct Config {
     pub title: String,
     pub theme: Theme,
+    pub mode: Mode,
 }
 
 pub fn parse_config() -> Config {
