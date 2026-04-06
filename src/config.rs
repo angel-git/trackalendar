@@ -1,8 +1,19 @@
 use serde::Deserialize;
 
 #[derive(Deserialize)]
+pub enum Theme {
+    Green,
+    GreenReverse,
+    Red,
+    RedReverse,
+    Blue,
+    BlueReverse,
+}
+
+#[derive(Deserialize)]
 pub struct Config {
     pub title: String,
+    pub theme: Theme,
 }
 
 pub fn parse_config() -> Config {

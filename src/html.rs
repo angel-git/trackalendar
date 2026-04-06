@@ -1,3 +1,4 @@
+use crate::config::{Config, Theme};
 use chrono::{Datelike, Duration, NaiveDate};
 use std::collections::HashMap;
 
@@ -8,10 +9,10 @@ struct DayCell {
     level: u8,
 }
 
-pub fn create_html(entries: &[(NaiveDate, u16)], title: &str) -> String {
+pub fn create_html(entries: &[(NaiveDate, u16)], config: &Config) -> String {
     let mut html = String::new();
     html.push_str("<!DOCTYPE html>\n<html lang=\"en\">");
-    html.push_str(&add_head());
+    html.push_str(&add_head(config));
     html.push_str("<body>\n");
 
     let years = extract_years(entries);
@@ -20,9 +21,8 @@ pub fn create_html(entries: &[(NaiveDate, u16)], title: &str) -> String {
         .map(|(date, count)| (*date, *count))
         .collect();
 
-
     html.push_str("<div class=\"container\">\n");
-    html.push_str(&format!("<h1>{}</h1>\n", title));
+    html.push_str(&format!("<h1>{}</h1>\n", config.title));
 
     for year in years {
         html.push_str(&format!("<h3>{}</h3>\n", year));
@@ -50,7 +50,8 @@ pub fn create_html(entries: &[(NaiveDate, u16)], title: &str) -> String {
     html
 }
 
-fn add_head() -> String {
+fn add_head(config: &Config) -> String {
+    let css_variables = create_css_variables(&config.theme);
     let styles = r#"
 
         body {
@@ -70,22 +71,21 @@ fn add_head() -> String {
         .year {
           display: grid;
           grid-auto-flow: column;
-          grid-template-rows: repeat(7, 12px);
+          grid-template-rows: repeat(7, 24px);
           gap: 2px;
         }
 
         .day {
-          width: 12px;
-          height: 12px;
+          width: 24px;
+          height: 24px;
           border-radius: 2px;
         }
 
-        /* GitHub-like colors */
-        .level-0 { background: #ebedf0; }
-        .level-1 { background: #c6e48b; }
-        .level-2 { background: #7bc96f; }
-        .level-3 { background: #239a3b; }
-        .level-4 { background: #196127; }
+        .level-0 { background: var(--level-0-color); }
+        .level-1 { background: var(--level-1-color); }
+        .level-2 { background: var(--level-2-color); }
+        .level-3 { background: var(--level-3-color); }
+        .level-4 { background: var(--level-4-color); }
 
         .empty {
           background: transparent;
@@ -93,9 +93,75 @@ fn add_head() -> String {
 
         "#;
     format!(
-        "<head><style>{}</style><title>Trackalendar</title></head>\n",
+        "<head><style>{} {}</style><title>Trackalendar</title></head>\n",
+        css_variables,
         styles,
     )
+}
+
+fn create_css_variables(theme: &Theme) -> String {
+    match theme {
+        Theme::Green => r#"
+        :root {
+        --level-0-color: #ebedf0;
+        --level-1-color: #c6e48b;
+        --level-2-color: #7bc96f;
+        --level-3-color: #239a3b;
+        --level-4-color: #196127;
+        }
+        "#
+        .to_string(),
+        Theme::GreenReverse => r#"
+        :root {
+        --level-0-color: #196127;
+        --level-1-color: #239a3b;
+        --level-2-color: #7bc96f;
+        --level-3-color: #c6e48b;
+        --level-4-color: #ebedf0;
+        }
+        "#
+        .to_string(),
+        Theme::Red => r#"
+        :root {
+        --level-0-color: #f2e9e9;
+        --level-1-color: #f5b5b5;
+        --level-2-color: #f26d6d;
+        --level-3-color: #d73a3a;
+        --level-4-color: #8b1e1e;
+        }
+        "#
+        .to_string(),
+        Theme::RedReverse => r#"
+        :root {
+        --level-0-color: #8b1e1e;
+        --level-1-color: #d73a3a;
+        --level-2-color: #f26d6d;
+        --level-3-color: #f5b5b5;
+        --level-4-color: #f2e9e9;
+        }
+        "#
+        .to_string(),
+        Theme::Blue => r#"
+        :root {
+        --level-0-color: #ebf5fb;
+        --level-1-color: #b6dcf6;
+        --level-2-color: #73bdf0;
+        --level-3-color: #2f81f7;
+        --level-4-color: #1f4e8c;
+        }
+        "#
+        .to_string(),
+        Theme::BlueReverse => r#"
+        :root {
+        --level-0-color: #1f4e8c;
+        --level-1-color: #2f81f7;
+        --level-2-color: #73bdf0;
+        --level-3-color: #b6dcf6;
+        --level-4-color: #ebf5fb;
+        }
+        "#
+        .to_string(),
+    }
 }
 
 fn extract_years(entries: &[(NaiveDate, u16)]) -> Vec<i32> {

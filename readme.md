@@ -1,7 +1,7 @@
 ## Trackalendar 🗓️
 
 It is a calendar heatmap that shows the number of events that happened on each day.
-![trackalendar.png](trackalendar.png)
+![trackalendar.png](screenshots/trackalendar.png)
 ### Example
 
 See the demo published in GitHub Pages: https://angel-git.github.io/trackalendar/
@@ -10,7 +10,7 @@ See the demo published in GitHub Pages: https://angel-git.github.io/trackalendar
 
 1. Fork this repo.
 2. Enable Github pages in the settings, set the source to `docs` branch:
-![github-config.png](github-config.png)
+![github-config.png](screenshots/github-config.png)
 3. Run `log.sh` to log an event, events are stored in `events.txt`, each line contains a date that something happened, you can log multiple events on the same day.
 4. Commit and push your changes.
 5. A Github action will generate the html page and publish it to GitHub Pages from the `docs` branch.
@@ -19,6 +19,13 @@ See the demo published in GitHub Pages: https://angel-git.github.io/trackalendar
 
 You can customize the configuration in `config.toml`, here are the available options:
 - `title`: The title of the page.
+- `theme`: The colors of the heatmap, from 0 to 4 events per day:
+  - `Green` ![green.png](screenshots/green.png)
+  - `GreenReverse` ![green-reverse.png](screenshots/green-reverse.png)
+  - `Blue` ![blue.png](screenshots/blue.png)
+  - `BlueReverse` ![blue-reverse.png](screenshots/blue-reverse.png)
+  - `Red` ![red.png](screenshots/red.png)
+  - `RedReverse` ![red-reverse.png](screenshots/red-reverse.png)
 
 Once is configured commit and push your changes
 
@@ -30,5 +37,5 @@ Once is configured commit and push your changes
 - [x] Publish to GitHub Pages
 - [ ] Support mobile
 - [ ] Windows scripts
-- [ ] Customize heatmap colors and threesholds
+- [x] Customize heatmap colors and threesholds
 - [ ] Theme support
