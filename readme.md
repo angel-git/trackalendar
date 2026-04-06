@@ -14,6 +14,13 @@ See the demo published in GitHub Pages: https://angel-git.github.io/trackalendar
 4. Commit and push your changes.
 5. A Github action will generate the html page and publish it to GitHub Pages from the `docs` branch.
 
+### Configuration
+
+You can customize the configuration in `config.toml`, here are the available options:
+- `title`: The title of the page.
+
+Once is configured commit and push your changes
+
 ### TODO
 
 - [x] Parse the entries file
