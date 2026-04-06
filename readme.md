@@ -16,8 +16,8 @@ See the demo published in GitHub Pages: https://angel-git.github.io/trackalendar
 
 ### TODO
 
-- [ ] Parse the entries file
-- [ ] Generate the html page
+- [x] Parse the entries file
+- [x] Generate the html page
 - [ ] Add a switch between examples and prod data
 - [ ] Publish to GitHub Pages
 - [ ] Windows scripts
