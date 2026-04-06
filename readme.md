@@ -11,7 +11,8 @@ See the demo published in GitHub Pages: https://angel-git.github.io/trackalendar
 1. Fork this repo.
 2. Enable Github pages in the settings, set the source to `docs` branch:
 ![github-config.png](screenshots/github-config.png)
-3. Run `log.sh` to log an event, events are stored in `events.txt`, each line contains a date that something happened, you can log multiple events on the same day.
+3. Run `log.sh` (or `log.ps1` if you are on Windows (I haven't tested myself...)) to log an event, events are stored in `events.txt`, each line contains a date that something happened, you can log multiple events on the same day.
+   - If you missed some day, you can add ` -d YYYY-MM-DD` as argument into the script or you can also edit the `events.txt` file directly, just make sure to follow the format.
 4. Commit and push your changes.
 5. A Github action will generate the html page and publish it to GitHub Pages from the `docs` branch.
 
@@ -36,6 +37,6 @@ Once is configured commit and push your changes
 - [x] Add a switch between examples and prod data
 - [x] Publish to GitHub Pages
 - [x] Support mobile
-- [ ] Windows scripts
+- [x] Windows scripts
 - [x] Customize heatmap colors and threesholds
-- [ ] Theme support
+- [ ] Light/dark mode support
