@@ -50,4 +50,4 @@ Once is configured commit and push your changes
 - [x] Support mobile
 - [x] Windows scripts
 - [x] Customize heatmap colors and threesholds
-- [ ] Light/dark mode support
+- [x] Light/dark mode support
