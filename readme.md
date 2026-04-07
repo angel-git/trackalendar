@@ -37,6 +37,7 @@ You can customize the configuration in `config.toml`, here are the available opt
   - `Red` ![red.png](screenshots/red.png)
   - `RedReverse` ![red-reverse.png](screenshots/red-reverse.png)
 - `mode`: `Light` or `Dark` mode.
+![trackalendar-dark.png](screenshots/trackalendar-dark.png)
 
 Once is configured commit and push your changes
 
