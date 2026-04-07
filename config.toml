@@ -1,3 +1,5 @@
 title = "My personal events"
 # avaiable themes: "Green", "GreenReverse", "Red", "RedReverse", "Blue" , "BlueReverse"
 theme = "Green"
+# available modes: "Light", "Dark"
+mode = "Light"
