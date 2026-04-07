@@ -114,72 +114,151 @@ fn add_head(config: &Config) -> String {
         "#;
     format!(
         "<head><style>{} {}</style><title>Trackalendar</title></head>\n",
-        css_variables,
-        styles,
+        css_variables, styles,
     )
 }
 
 fn create_css_variables(config: &Config) -> String {
     let color_variables = match config.theme {
-        Theme::Green => r#"
-        --level-0-color: #ebedf0;
-        --level-1-color: #c6e48b;
-        --level-2-color: #7bc96f;
-        --level-3-color: #239a3b;
-        --level-4-color: #196127;
-        "#
+        Theme::Green => match config.mode {
+            Mode::Light => {
+                r#"
+                --level-0-color: #ebedf0;
+                --level-1-color: #c6e48b;
+                --level-2-color: #7bc96f;
+                --level-3-color: #239a3b;
+                --level-4-color: #196127;
+                "#
+            }
+            Mode::Dark => {
+                r#"
+                --level-0-color: #161b22;
+                --level-1-color: #0e4429;
+                --level-2-color: #006d32;
+                --level-3-color: #26a641;
+                --level-4-color: #39d353;
+                "#
+            }
+        }
         .to_string(),
-        Theme::GreenReverse => r#"
+        Theme::GreenReverse => match config.mode {
+            Mode::Light => {
+                r#"
         --level-0-color: #196127;
         --level-1-color: #239a3b;
         --level-2-color: #7bc96f;
         --level-3-color: #c6e48b;
         --level-4-color: #ebedf0;
         "#
+            }
+            Mode::Dark => {
+                r#"
+                --level-0-color: #39d353;
+                --level-1-color: #26a641;
+                --level-2-color: #006d32;
+                --level-3-color: #0e4429;
+                --level-4-color: #161b22;
+                "#
+            }
+        }
         .to_string(),
-        Theme::Red => r#"
+        Theme::Red => match config.mode {
+            Mode::Light => {
+                r#"
         --level-0-color: #f2e9e9;
         --level-1-color: #f5b5b5;
         --level-2-color: #f26d6d;
         --level-3-color: #d73a3a;
         --level-4-color: #8b1e1e;
         "#
+            }
+            Mode::Dark => {
+                r#"
+        --level-0-color: #161b22;
+        --level-1-color: #4a1e1e;
+        --level-2-color: #7a2e2e;
+        --level-3-color: #d73a3a;
+        --level-4-color: #ff6b6b;
+        "#
+            }
+        }
         .to_string(),
-        Theme::RedReverse => r#"
+        Theme::RedReverse => match config.mode {
+            Mode::Light => {
+                r#"
         --level-0-color: #8b1e1e;
         --level-1-color: #d73a3a;
         --level-2-color: #f26d6d;
         --level-3-color: #f5b5b5;
         --level-4-color: #f2e9e9;
         "#
+            }
+            Mode::Dark => {
+                r#"
+        --level-0-color: #f2e9e9;
+        --level-1-color: #f5b5b5;
+        --level-2-color: #f26d6d;
+        --level-3-color: #d73a3a;
+        --level-4-color: #8b1e1e;
+        "#
+            }
+        }
         .to_string(),
-        Theme::Blue => r#"
+        Theme::Blue => match config.mode {
+            Mode::Light => {
+                r#"
         --level-0-color: #ebf5fb;
         --level-1-color: #b6dcf6;
         --level-2-color: #73bdf0;
         --level-3-color: #2f81f7;
         --level-4-color: #1f4e8c;
         "#
+            }
+            Mode::Dark => {
+                r#"
+        --level-0-color: #161b22;
+        --level-1-color: #0c2d6b;
+        --level-2-color: #1f6feb;
+        --level-3-color: #58a6ff;
+        --level-4-color: #79c0ff;
+        "#
+            }
+        }
         .to_string(),
-        Theme::BlueReverse => r#"
+        Theme::BlueReverse => match config.mode {
+            Mode::Light => {
+                r#"
         --level-0-color: #1f4e8c;
         --level-1-color: #2f81f7;
         --level-2-color: #73bdf0;
         --level-3-color: #b6dcf6;
         --level-4-color: #ebf5fb;
         "#
+            }
+            Mode::Dark => {
+                r#"
+        --level-0-color: #79c0ff;
+        --level-1-color: #58a6ff;
+        --level-2-color: #1f6feb;
+        --level-3-color: #0c2d6b;
+        --level-4-color: #161b22;
+        "#
+            }
+        }
         .to_string(),
     };
 
     let mode_variables = match config.mode {
         Mode::Light => r#"
-            --page-background-color: oklch(0.9674 0 214.73);
-            --page-text-color: black;
-        "#.to_string(),
-        Mode::Dark =>  r#"
-            --page-background-color: oklch(0.2261 0 214.73);
-            --page-text-color: white;
-        "#.to_string(),
+        --page-background-color: oklch(1 0 0);
+        --page-text-color: oklch(0.2542 0.0111 254.04);
+        "#
+        .to_string(),
+        Mode::Dark => r#"
+        --page-background-color: oklch(0.1763 0.014 258.36);
+        --page-text-color: oklch(0.8569 0.0141 247.99);
+        "#
+        .to_string(),
     };
 
     format!(" :root {{ {} {} }}", color_variables, mode_variables)
