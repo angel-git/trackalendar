@@ -25,7 +25,7 @@ pub fn create_html(entries: &[(NaiveDate, u16)], config: &Config) -> String {
     html.push_str(&format!("<h1>{}</h1>\n", config.title));
 
     for year in years {
-        html.push_str(&format!("<h3>{}</h3>\n", year));
+        html.push_str(&format!("<h2>{}</h2>\n", year));
         // html.push_str("<div>\n");
 
         let weeks = build_year(year, &map);
@@ -59,7 +59,7 @@ fn add_head(config: &Config) -> String {
             background-color: var(--page-background-color);
             color: var(--page-text-color);
         }
-        h3 {
+        h2 {
             margin-bottom: 0;
         }
         .container {
