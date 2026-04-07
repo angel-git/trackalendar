@@ -2,7 +2,6 @@
 
 ![trackalendar.png](screenshots/trackalendar.png)
 
-
 It is a calendar heatmap that shows the number of events that happened on each day.
 
 Deployed in your Github Pages.
@@ -19,25 +18,29 @@ See the demo published in GitHub Pages with random dates: https://angel-git.gith
 
 1. Fork this repo.
 2. Enable Github pages in the settings, set the source to `docs` branch:
-![github-config.png](screenshots/github-config.png)
-3. Run `log.sh` (or `log.ps1` if you are on Windows (I haven't tested myself...)) to log an event, events are stored in `events.txt`, each line contains a date that something happened, you can log multiple events on the same day.
-   - If you missed some day, you can add ` -d YYYY-MM-DD` as argument into the script or you can also edit the `events.txt` file directly, just make sure to follow the format.
+   ![github-config.png](screenshots/github-config.png)
+3. Run `log.sh` (or `log.ps1` if you are on Windows (I haven't tested myself...)) to log an event, events are stored in
+   `events.txt`, each line contains a date that something happened, you can log multiple events on the same day by just
+   running the script again and again.
+    - If you missed some day, you can add ` -d YYYY-MM-DD` as argument into the script or you can also edit the
+      `events.txt` file directly, just make sure to follow the format.
 4. Commit and push your changes.
 5. A Github action will generate the html page and publish it to GitHub Pages from the `docs` branch.
 
 ### Configuration
 
 You can customize the configuration in `config.toml`, here are the available options:
+
 - `title`: The title of the page.
 - `theme`: The colors of the heatmap, from 0 to 4 events per day:
-  - `Green` ![green.png](screenshots/green.png)
-  - `GreenReverse` ![green-reverse.png](screenshots/green-reverse.png)
-  - `Blue` ![blue.png](screenshots/blue.png)
-  - `BlueReverse` ![blue-reverse.png](screenshots/blue-reverse.png)
-  - `Red` ![red.png](screenshots/red.png)
-  - `RedReverse` ![red-reverse.png](screenshots/red-reverse.png)
+    - `Green` ![green.png](screenshots/green.png)
+    - `GreenReverse` ![green-reverse.png](screenshots/green-reverse.png)
+    - `Blue` ![blue.png](screenshots/blue.png)
+    - `BlueReverse` ![blue-reverse.png](screenshots/blue-reverse.png)
+    - `Red` ![red.png](screenshots/red.png)
+    - `RedReverse` ![red-reverse.png](screenshots/red-reverse.png)
 - `mode`: `Light` or `Dark` mode.
-![trackalendar-dark.png](screenshots/trackalendar-dark.png)
+  ![trackalendar-dark.png](screenshots/trackalendar-dark.png)
 
 Once is configured commit and push your changes
 
