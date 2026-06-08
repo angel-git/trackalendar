@@ -28,7 +28,7 @@ pub fn create_html(entries: &[(NaiveDate, u16)], config: &Config) -> String {
         html.push_str(&format!("<h2>--- {} ---</h2>\n", year));
         // html.push_str("<div>\n");
 
-        let weeks = build_year(year, &map);
+        let weeks = build_year(year, &map, config);
         html.push_str("<div class=\"year\">\n");
 
         for week in weeks {
@@ -270,7 +270,7 @@ fn extract_years(entries: &[(NaiveDate, u16)]) -> Vec<i32> {
     years
 }
 
-fn build_year(year: i32, data: &HashMap<NaiveDate, u16>) -> Vec<Vec<Option<DayCell>>> {
+fn build_year(year: i32, data: &HashMap<NaiveDate, u16>, config: &Config) -> Vec<Vec<Option<DayCell>>> {
     let start = NaiveDate::from_ymd_opt(year, 1, 1).unwrap();
     let end = NaiveDate::from_ymd_opt(year, 12, 31).unwrap();
 
@@ -291,13 +291,11 @@ fn build_year(year: i32, data: &HashMap<NaiveDate, u16>) -> Vec<Vec<Option<DayCe
 
         let count = *data.get(&current).unwrap_or(&0);
 
-        let level = match count {
-            0 => 0,
-            1 => 1,
-            2 => 2,
-            3 => 3,
-            _ => 4,
-        };
+        let level = config
+            .level_thresholds
+            .iter()
+            .filter(|&&threshold| count >= threshold)
+            .count() as u8;
 
         current_week[weekday] = Some(DayCell {
             date: current,
