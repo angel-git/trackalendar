@@ -41,6 +41,7 @@ You can customize the configuration in `config.toml`, here are the available opt
     - `RedReverse` ![red-reverse.png](screenshots/red-reverse.png)
 - `mode`: `Light` or `Dark` mode.
   ![trackalendar-dark.png](screenshots/trackalendar-dark.png)
+- `level_thresholds`: The thresholds for each level, default is `1,2,3,4`, which means that 0 events will be level 0, 1 event will be level 1, 2 events will be level 2, 3 events will be level 3, and 4 or more events will be level 4.
 
 Once is configured commit and push your changes
 
