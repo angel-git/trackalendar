@@ -35,8 +35,8 @@ pub fn create_html(entries: &[(NaiveDate, u16)], config: &Config) -> String {
             for day in week {
                 if let Some(d) = day {
                     html.push_str(&format!(
-                        "<div class=\"day level-{}\" title=\"{} ({} events)\"></div>\n",
-                        d.level, d.date, d.count
+                        "<div class=\"day level-{}\" title=\"{} ({} {})\"></div>\n",
+                        d.level, d.date, d.count, config.events_name
                     ));
                 } else {
                     html.push_str("<div class=\"day empty\"></div>\n");

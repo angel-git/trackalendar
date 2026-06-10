@@ -22,6 +22,7 @@ pub struct Config {
     pub theme: Theme,
     pub mode: Mode,
     pub level_thresholds: Vec<u16>,
+    pub events_name: String,
 }
 
 pub fn parse_config() -> Config {
